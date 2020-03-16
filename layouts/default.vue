@@ -1,8 +1,63 @@
 <template>
   <div>
-    <nuxt />
+    <el-container class="grid-content bg-purple-dark">
+      <el-main>
+        <el-header>
+          <el-button style="background-color: #B3C0D1; border: none" circle @click="exit">
+            <i class="el-icon-back icon-header" />
+          </el-button>
+          <el-dropdown>
+            <i class="el-icon-setting icon-header" />
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>Chat room {{ user.room }}</el-dropdown-item>
+              <el-dropdown-item>Add</el-dropdown-item>
+              <el-dropdown-item>Delete</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <el-button style="background-color: #B3C0D1; border: none" circle @click="drawer = !drawer">
+            <i class="el-icon-s-fold icon-header" />
+          </el-button>
+        </el-header>
+        <el-row>
+          <el-col :span="8" :offset="8">
+            <nuxt />
+          </el-col>
+        </el-row>
+      </el-main>
+    </el-container>
+    <el-drawer
+      direction="ltr"
+      size="25%"
+      title="I am the title"
+      :visible.sync="drawer"
+      :with-header="false"
+    >
+      <div class="list-chat">
+        <div v-for="user in users" :key="user.id" :class="{'bg-purple-dark': user.id === 2}">
+          {{ user.name }}
+        </div>
+      </div>
+    </el-drawer>
   </div>
 </template>
+<script>
+import { mapState } from 'vuex'
+export default {
+  data: () => ({
+    drawer: false,
+    users: [
+      { id: 1, name: 'User 1' },
+      { id: 2, name: 'User 2' }
+    ]
+  }),
+  computed: mapState(['user']),
+  methods: {
+    exit () {
+      this.$router.push('/?message=leftChat')
+    }
+  }
+}
+</script>
 
 <style>
 html {
@@ -22,6 +77,21 @@ html {
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+.el-header {
+  background-color: #B3C0D1;
+  color: #333;
+  line-height: 60px;
+  text-align: right;
+  font-size: 12px;
+}
+.icon-header {
+  margin-right: 15px;
+  font-size: large
+}
+
+.el-aside {
+  color: #333;
 }
 
 .button--green {
@@ -51,5 +121,13 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+.bg-purple-dark {
+  background: #99a9bf;
+}
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
+  height: 100vh;
 }
 </style>

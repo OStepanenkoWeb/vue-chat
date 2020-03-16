@@ -1,13 +1,18 @@
-import { SET_USER } from './mutationConst'
+import { CLEAR_DATA, SET_USER } from './mutationConst'
 
 export const state = () => ({
-  user: {}
+  user: {},
+  messages: [{ text: 'test text' }]
 
 })
 
 export const mutations = {
   [SET_USER]: (state, user) => {
     state.user = user
+  },
+  [CLEAR_DATA]: (state) => {
+    state.user = {}
+    state.messages = []
   }
 }
 
