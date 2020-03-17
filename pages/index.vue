@@ -86,8 +86,16 @@ export default {
             room: this.ruleForm.room
           }
 
-          this.SET_USER(user)
-          this.$router.push('/chat')
+          this.$socket.emit('userJoined', user, (data) => {
+            const { type, message, userId } = data
+            if (type || message) {
+              console.error(type, message)
+            } else {
+              user.id = userId
+              this.SET_USER(user)
+              this.$router.push('/chat')
+            }
+          })
         } else {
           console.log('error submit!!')
           return false

@@ -1,4 +1,4 @@
-import { CLEAR_DATA, SET_USER } from './mutationConst'
+import { CLEAR_DATA, NEW_MESSAGE, SET_USER } from './mutationConst'
 
 export const state = () => ({
   user: {},
@@ -13,11 +13,16 @@ export const mutations = {
   [CLEAR_DATA]: (state) => {
     state.user = {}
     state.messages = []
+  },
+  [NEW_MESSAGE]: (state, message) => {
+    console.log(message)
+    state.messages.push(message)
   }
 }
 
 export const actions = {
   SOCKET_newMessage (ctx, data) {
-    console.log('Message received', data)
+    console.log('Message received', data, ctx)
+    ctx.commit(NEW_MESSAGE, data)
   }
 }
