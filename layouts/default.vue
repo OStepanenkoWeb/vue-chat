@@ -33,8 +33,9 @@
       :with-header="false"
     >
       <div class="list-chat">
-        <div v-for="user in users" :key="user.id" :class="{'bg-purple-dark': user.id === 2}">
-          {{ user.name }}
+        <div v-for="user in users" :key="user.id" class="list-chat-item" :class="{'bg-purple-dark': user.id === 2}">
+          <div>{{ user.name }}</div>
+          <div><i class="el-icon-chat-round icon-header" /></div>
         </div>
       </div>
     </el-drawer>
@@ -84,6 +85,16 @@ html {
   line-height: 60px;
   text-align: right;
   font-size: 12px;
+}
+.list-chat {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list-chat-item {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 .icon-header {
   margin-right: 15px;
