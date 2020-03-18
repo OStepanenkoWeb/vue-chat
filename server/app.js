@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
   })
   socket.on('clickMessage', (data) => {
     setTimeout(() => {
-      socket.emit('newMessage', data.text + 'SERVER')
+      socket.emit('newMessage', buildMessage('admin', data.text + 'SERVER'))
     })
   }, 500)
 })

@@ -2,8 +2,7 @@ import { CLEAR_DATA, NEW_MESSAGE, SET_USER } from './mutationConst'
 
 export const state = () => ({
   user: {},
-  messages: [{ text: 'test text' }]
-
+  messages: []
 })
 
 export const mutations = {

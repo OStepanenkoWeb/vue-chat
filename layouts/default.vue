@@ -18,8 +18,8 @@
             <i class="el-icon-s-fold icon-header" />
           </el-button>
         </el-header>
-        <el-row>
-          <el-col :span="8" :offset="8">
+        <el-row class="full-height">
+          <el-col :span="12" :offset="8" class="full-height">
             <nuxt />
           </el-col>
         </el-row>
@@ -141,4 +141,7 @@ html {
   min-height: 36px;
   height: 100vh;
 }
+  .full-height {
+    height: 100%
+  }
 </style>
