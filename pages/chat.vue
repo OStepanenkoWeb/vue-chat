@@ -3,13 +3,14 @@
     <el-main>
       <el-row class="full-height">
         <el-col>
-          <ul class="messages-list">{{messages}}
+          <ul class="messages-list">
+            {{ messages }}
             <Message
               v-for="(message, id) in messages"
               :key="id"
               :name="message.name"
               :text="message.text"
-              :owner="true"
+              :owner="message.id === user.id"
             />
           </ul>
           <div class="push-form">
