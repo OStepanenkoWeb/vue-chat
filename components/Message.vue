@@ -4,7 +4,6 @@
       <p class="text-message">
         {{ text }}
       </p>
-      <hr>
     </div>
     <div v-else class="user-message-wrap">
       <div class="user-message" :class="{owner}">
@@ -42,12 +41,13 @@ export default {
     flex-direction: column;
   }
   .user-message {
+    background: #333333;
+    color: #F5F5F5;
     padding: 1rem;
     width: 60%;
-    margin: 0 1rem;
+    margin: 1rem;
     box-shadow: 0 1px 0 0 rgba(50, 50, 50, 0.3);
     border-radius: 4px;
-    background: #99a9bf;
     position: relative;
   }
   .owner{
@@ -56,7 +56,12 @@ export default {
     align-self: flex-end;
   }
   .system-message{
+    background: #ff4500;
+    color: #F5F5F5;
+    padding: 1rem;
     margin-bottom: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 rgba(50, 50, 50, 0.3);
 
   }
   .text-message{

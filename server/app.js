@@ -2,7 +2,7 @@ const http = require('http')
 const app = require('express')()
 const server = http.createServer(app)
 const io = require('socket.io')(server)
-const userManager = require('./usersManager')
+const userManager = require('./usersManager')()
 
 const buildMessage = (name, text, id) => ({ name, text, id })
 
@@ -31,6 +31,7 @@ io.on('connection', (socket) => {
       .emit('newMessage', buildMessage('admin', `User ${name} joined the chat (--) /`))
   })
   socket.on('clickMessage', (data, res) => {
+    console.log(data)
     if (!data.text) {
       return res('Message cannot be empty')
     }
@@ -40,7 +41,8 @@ io.on('connection', (socket) => {
     if (user) {
       io.to(user.room).emit('newMessage', buildMessage(user.name, data.text, data.id))
     }
-    res()
+    console.log('35435345')
+    res({})
   })
 })
 

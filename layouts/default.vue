@@ -1,30 +1,26 @@
 <template>
   <div>
-    <el-container class="grid-content bg-purple-dark">
-      <el-main>
-        <el-header>
-          <el-button style="background-color: #B3C0D1; border: none" circle @click="exit">
-            <i class="el-icon-back icon-header" />
-          </el-button>
-          <el-dropdown>
-            <i class="el-icon-setting icon-header" />
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>Chat room {{ user.room }}</el-dropdown-item>
-              <el-dropdown-item>Add</el-dropdown-item>
-              <el-dropdown-item>Delete</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-          <el-button style="background-color: #B3C0D1; border: none" circle @click="drawer = !drawer">
-            <i class="el-icon-s-fold icon-header" />
-          </el-button>
-        </el-header>
-        <el-row class="full-height">
-          <el-col :span="12" :offset="8" class="full-height">
-            <nuxt />
-          </el-col>
-        </el-row>
-      </el-main>
-    </el-container>
+    <div class="grid-content bg-purple-dark">
+      <div>
+        <el-button style="background-color: #B3C0D1; border: none" circle @click="exit">
+          <i class="el-icon-back icon-header" />
+        </el-button>
+        <el-dropdown>
+          <i class="el-icon-setting icon-header" />
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>Chat room {{ user.room }}</el-dropdown-item>
+            <el-dropdown-item>Add</el-dropdown-item>
+            <el-dropdown-item>Delete</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+        <el-button style="background-color: #B3C0D1; border: none" circle @click="drawer = !drawer">
+          <i class="el-icon-s-fold icon-header" />
+        </el-button>
+      </div>
+      <div>
+        <nuxt />
+      </div>
+    </div>
     <el-drawer
       direction="ltr"
       size="25%"
@@ -61,7 +57,7 @@ export default {
 </script>
 
 <style>
-html {
+html, body {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
@@ -71,6 +67,10 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  height: 100%;
+},
+#__nuxt {
+  height: 100%;
 }
 
 *,
@@ -141,7 +141,4 @@ html {
   min-height: 36px;
   height: 100vh;
 }
-  .full-height {
-    height: 100%
-  }
 </style>

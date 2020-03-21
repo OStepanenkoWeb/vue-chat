@@ -1,25 +1,20 @@
 <template>
-  <el-container class="full-height">
-    <el-main>
-      <el-row class="full-height">
-        <el-col>
-          <ul class="messages-list">
-            {{ messages }}
-            <Message
-              v-for="(message, id) in messages"
-              :key="id"
-              :name="message.name"
-              :text="message.text"
-              :owner="message.id === user.id"
-            />
-          </ul>
-          <div class="push-form">
-            <ChatForm />
-          </div>
-        </el-col>
-      </el-row>
-    </el-main>
-  </el-container>
+  <div style="height: 80%">
+    <div>
+      <ul class="messages-list">
+        <Message
+          v-for="(message, id) in messages"
+          :key="id"
+          :name="message.name"
+          :text="message.text"
+          :owner="message.id === user.id"
+        />
+      </ul>
+      <div class="push-form">
+        <ChatForm />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -47,10 +42,9 @@ export default {
   padding: 1rem;
   height: 80px;
   background: #212121;
-
 }
   .messages-list {
-    height: 100%;
+    height: 60%;
     position: relative;
     overflow: hidden;
   }

@@ -1,11 +1,14 @@
 <template>
-  <input
-    v-model="text"
-    type="textarea"
-    :rows="2"
-    placeholder="Please input message"
-    @keydown.enter="send"
-  >
+  <div>
+    {{ text }}
+    <el-input
+      v-model="text"
+      clacc="chat-input"
+      :rows="4"
+      placeholder="Please input message"
+      @change="send"
+    />
+  </div>
 </template>
 
 <script>
@@ -16,8 +19,6 @@ export default {
   }),
   methods: {
     send () {
-      console.log(this.text)
-
       this.$socket.emit('clickMessage', {
         text: this.text,
         id: this.$store.state.user.id
@@ -28,7 +29,6 @@ export default {
         if (type || message) {
           console.error(type, message)
         } else {
-          console.log(4343434)
           this.text = ''
         }
       })
@@ -38,5 +38,9 @@ export default {
 </script>
 
 <style scoped>
+  .chat-input{
+    width: 100%;
+    height: 100%;
+  }
 
 </style>

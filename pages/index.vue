@@ -1,40 +1,36 @@
 <template>
-  <el-container>
-    <el-main>
-      <el-row>
-        <el-col :span="8" :offset="8">
-          <el-card class="box-card">
-            <div slot="header" class="clearfix">
-              <span><h1>Vue chat</h1></span>
-            </div>
-            <el-form
-              ref="ruleForm"
-              :model="ruleForm"
-              :label-position="labelPosition"
-              label-width="100px"
-              :rules="rules"
-              class="demo-ruleForm"
-            >
-              <el-form-item label="Your Name" prop="name">
-                <el-input v-model="ruleForm.name" />
-              </el-form-item>
-              <el-form-item label="Your Room" prop="room">
-                <el-input v-model="ruleForm.room" />
-              </el-form-item>
-              <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm')">
-                  Entry
-                </el-button>
-                <el-button @click="resetForm('ruleForm')">
-                  Reset
-                </el-button>
-              </el-form-item>
-            </el-form>
-          </el-card>
-        </el-col>
-      </el-row>
-    </el-main>
-  </el-container>
+  <div class="container">
+    <div>
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span><h1>Vue chat</h1></span>
+        </div>
+        <el-form
+          ref="ruleForm"
+          :model="ruleForm"
+          :label-position="labelPosition"
+          label-width="100px"
+          :rules="rules"
+          class="demo-ruleForm"
+        >
+          <el-form-item label="Your Name" prop="name">
+            <el-input v-model="ruleForm.name" />
+          </el-form-item>
+          <el-form-item label="Your Room" prop="room">
+            <el-input v-model="ruleForm.room" />
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submitForm('ruleForm')">
+              Entry
+            </el-button>
+            <el-button @click="resetForm('ruleForm')">
+              Reset
+            </el-button>
+          </el-form-item>
+        </el-form>
+      </el-card>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -112,7 +108,7 @@ export default {
 <style>
 .container {
   margin: 0 auto;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
