@@ -1,6 +1,6 @@
 <template>
   <div class="container-layouts">
-    <div class="bg-purple-dark">
+    <div class="layouts-wrapper bg-purple-dark">
       <div class="header">Header</div>
       <div>
         <nuxt />
@@ -28,8 +28,11 @@ export default {
     box-sizing: border-box;
     height: 100%;
   }
-  .container-layouts {
+  .layouts-wrapper {
     height: 100%;
+  }
+  .container-layouts {
+    height: 100vh;
     width: 100%;
   }
   .header {
