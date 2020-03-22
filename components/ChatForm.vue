@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ text }}
     <el-input
       v-model="text"
       clacc="chat-input"
@@ -29,6 +28,10 @@ export default {
         if (type || message) {
           console.error(type, message)
         } else {
+          window.scrollTo({
+            top: 1000,
+            behavior: 'smooth'
+          })
           this.text = ''
         }
       })

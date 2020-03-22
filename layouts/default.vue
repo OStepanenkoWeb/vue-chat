@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <div class="grid-content bg-purple-dark">
-      <div>
-        <el-button style="background-color: #B3C0D1; border: none" circle @click="exit">
-          <i class="el-icon-back icon-header" />
-        </el-button>
+  <div class="container-layouts">
+    <div class="layout-wrapper bg-purple-dark">
+      <div class="header">
+        <i class="el-icon-back icon-header" @click="exit" />
         <el-dropdown>
           <i class="el-icon-setting icon-header" />
           <el-dropdown-menu slot="dropdown">
@@ -13,12 +11,13 @@
             <el-dropdown-item>Delete</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <el-button style="background-color: #B3C0D1; border: none" circle @click="drawer = !drawer">
-          <i class="el-icon-s-fold icon-header" />
-        </el-button>
+        <i class="el-icon-s-fold icon-header" @click="drawer = !drawer" />
       </div>
-      <div>
+      <div class="chat-list">
         <nuxt />
+      </div>
+      <div class="push-form">
+        <ChatForm />
       </div>
     </div>
     <el-drawer
@@ -39,7 +38,11 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+import ChatForm from '../components/ChatForm'
 export default {
+  components: {
+    ChatForm
+  },
   data: () => ({
     drawer: false,
     users: [
@@ -68,7 +71,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   height: 100%;
-},
+}
 #__nuxt {
   height: 100%;
 }
@@ -78,6 +81,55 @@ html, body {
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+.chat-list {
+  padding-top: 7%;
+  display: flex;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+}
+.container-layouts {
+  height: 100vh;
+  width: 100%;
+}
+.layout-wrapper {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 80px;
+}
+.push-form {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  height: 80px;
+  background: #212121;
+}
+.header {
+  position: fixed;
+  z-index: 500;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 7%;
+  color: #F5F5F5;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  background: #47494E;
+  padding: 1rem;
+}
+.btn-header-menu {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #B3C0D1;
+  border: none;
+  border-radius: 1rem;
 }
 .el-header {
   background-color: #B3C0D1;

@@ -107,7 +107,7 @@ export default {
 
 <style>
 .container {
-  margin: 0 auto;
+  margin-bottom: 20%;
   height: 100%;
   display: flex;
   justify-content: center;

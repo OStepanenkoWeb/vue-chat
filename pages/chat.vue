@@ -1,7 +1,7 @@
 <template>
-  <div style="height: 80%">
+  <div class="chat-list-wrapper" style="height: 80%">
     <div>
-      <ul class="messages-list">
+      <div class="messages-list">
         <Message
           v-for="(message, id) in messages"
           :key="id"
@@ -9,9 +9,6 @@
           :text="message.text"
           :owner="message.id === user.id"
         />
-      </ul>
-      <div class="push-form">
-        <ChatForm />
       </div>
     </div>
   </div>
@@ -20,13 +17,11 @@
 <script>
 import { mapState } from 'vuex'
 import Message from '../components/Message'
-import ChatForm from '../components/ChatForm'
 
 export default {
   name: 'Chat',
   components: {
-    Message,
-    ChatForm
+    Message
   },
   middleware: ['chat'],
   computed: { ...mapState(['user']), ...mapState(['messages']) }
@@ -34,15 +29,9 @@ export default {
 </script>
 
 <style scoped>
-.push-form {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  height: 80px;
-  background: #212121;
-}
+  .chat-list-wrapper{
+    width: 40%;
+  }
   .messages-list {
     height: 60%;
     position: relative;

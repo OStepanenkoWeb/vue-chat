@@ -1,8 +1,10 @@
 <template>
   <div class="container-layouts">
-    <div class="layouts-wrapper bg-purple-dark">
-      <div class="header">Header</div>
-      <div>
+    <div class="layout-wrapper bg-purple-dark">
+      <div class="header">
+        Header
+      </div>
+      <div class="layout-main">
         <nuxt />
       </div>
     </div>
@@ -28,8 +30,15 @@ export default {
     box-sizing: border-box;
     height: 100%;
   }
-  .layouts-wrapper {
+  .layout-wrapper {
     height: 100%;
+  }
+  .layout-main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
   }
   .container-layouts {
     height: 100vh;
