@@ -28,8 +28,8 @@
       :with-header="false"
     >
       <div class="list-chat">
-        <div v-for="user in users" :key="user.id" class="list-chat-item" :class="{'bg-purple-dark': user.id === 2}">
-          <div>{{ user.name }}</div>
+        <div v-for="u in users" :key="u.id" class="list-chat-item" :class="{'bg-purple-dark': u.id === user.id}">
+          <div>{{ u.name }}</div>
           <div><i class="el-icon-chat-round icon-header" /></div>
         </div>
       </div>
@@ -44,16 +44,14 @@ export default {
     ChatForm
   },
   data: () => ({
-    drawer: false,
-    users: [
-      { id: 1, name: 'User 1' },
-      { id: 2, name: 'User 2' }
-    ]
+    drawer: false
   }),
-  computed: mapState(['user']),
+  computed: mapState(['user', 'users']),
   methods: {
     exit () {
-      this.$router.push('/?message=leftChat')
+      this.$socket.emit('userLeft', this.user.id, () => {
+        this.$router.push('/?message=leftChat')
+      })
     }
   }
 }

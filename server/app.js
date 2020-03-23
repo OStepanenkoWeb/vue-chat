@@ -25,13 +25,13 @@ io.on('connection', (socket) => {
     })
 
     res({ userId: socket.id })
+    io.to(room).emit('updateUsers', userManager.getByRoom(room))
     socket.emit('newMessage', buildMessage('admin', `${name} Welcome to vue-chat... 0/`))
     socket.broadcast
       .to(room)
       .emit('newMessage', buildMessage('admin', `User ${name} joined the chat (--) /`))
   })
   socket.on('clickMessage', (data, res) => {
-    console.log(data)
     if (!data.text) {
       return res('Message cannot be empty')
     }
@@ -41,8 +41,27 @@ io.on('connection', (socket) => {
     if (user) {
       io.to(user.room).emit('newMessage', buildMessage(user.name, data.text, data.id))
     }
-    console.log('35435345')
+
     res({})
+  })
+
+  socket.on('userLeft', (id, res) => {
+    const user = userManager.remove(id)
+
+    if (user) {
+      io.to(user.room).emit('updateUsers', userManager.getByRoom(user.room))
+      io.to(user.room).emit('newMessage', buildMessage('admin', `User ${user.name} left chat`))
+    }
+    res()
+  })
+
+  socket.on('disconnect', () => {
+    const user = userManager.remove(socket.id)
+
+    if (user) {
+      io.to(user.room).emit('updateUsers', userManager.getByRoom(user.room))
+      io.to(user.room).emit('newMessage', buildMessage('admin', `User ${user.name} left chat`))
+    }
   })
 })
 
