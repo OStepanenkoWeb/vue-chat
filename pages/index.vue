@@ -57,6 +57,15 @@ export default {
       }
     }
   },
+  mounted () {
+    const { message } = this.$route.query
+    console.log(message)
+    if (message === 'noUser') {
+      this.$message('Please, input data')
+    } else if (message === 'leftChat') {
+      this.$message('You left the chat')
+    }
+  },
   head () {
     return {
       title: 'Vue-chat'
