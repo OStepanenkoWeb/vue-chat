@@ -1,8 +1,8 @@
-<template>
+<template functional>
   <div class="container-layouts">
     <div class="layout-wrapper bg-purple-dark">
       <div class="header">
-        Header
+        Vue-chat
       </div>
       <div class="layout-main">
         <nuxt />

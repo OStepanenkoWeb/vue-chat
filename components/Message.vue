@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <div>
     <div v-if="name === 'admin'" class="system-message">
       <p class="text-message">

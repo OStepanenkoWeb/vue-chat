@@ -59,7 +59,7 @@ export default {
   },
   mounted () {
     const { message } = this.$route.query
-    console.log(message)
+
     if (message === 'noUser') {
       this.$message('Please, input data')
     } else if (message === 'leftChat') {
@@ -94,7 +94,6 @@ export default {
           this.$socket.emit('userJoined', user, (data) => {
             const { type, message, userId } = data
             if (type || message) {
-              console.error(type, message)
             } else {
               user.id = userId
               this.SET_USER(user)
@@ -102,7 +101,6 @@ export default {
             }
           })
         } else {
-          console.log('error submit!!')
           return false
         }
       })
@@ -123,16 +121,6 @@ export default {
   align-items: center;
   text-align: center;
 }
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -140,17 +128,5 @@ export default {
 }
 .clearfix:after {
   clear: both
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>

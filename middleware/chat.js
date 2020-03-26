@@ -1,5 +1,7 @@
 export default function ({ store, redirect }) {
-  if (store.state.user && !Object.keys(store.state.user).length) {
+  const { user } = store.state
+
+  if (user && !Object.keys(user).length) {
     redirect('/?message=noUser')
   }
 }

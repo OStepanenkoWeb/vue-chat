@@ -18,9 +18,12 @@ export default {
   }),
   methods: {
     send () {
+      const { text } = this
+      const { id } = this.$store.state.user
+
       this.$socket.emit('clickMessage', {
-        text: this.text,
-        id: this.$store.state.user.id
+        text,
+        id
       },
       (data) => {
         const { type, message } = data

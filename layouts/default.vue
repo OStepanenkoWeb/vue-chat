@@ -7,8 +7,7 @@
           <i class="el-icon-setting icon-header" />
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>Chat room {{ user.room }}</el-dropdown-item>
-            <el-dropdown-item>Add</el-dropdown-item>
-            <el-dropdown-item>Delete</el-dropdown-item>
+            <el-dropdown-item>Chat user {{ user.name }}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <i class="el-icon-s-fold icon-header" @click="drawer = !drawer" />
@@ -28,9 +27,16 @@
       :with-header="false"
     >
       <div class="list-chat">
-        <div v-for="u in users" :key="u.id" class="list-chat-item" :class="{'bg-purple-dark': u.id === user.id}">
+        <div
+          v-for="u in users"
+          :key="u.id"
+          class="list-chat-item"
+          :class="{'bg-purple-dark': u.id === user.id}"
+        >
           <div>{{ u.name }}</div>
-          <div><i class="el-icon-chat-round icon-header" /></div>
+          <div>
+            <i class="el-icon-chat-round icon-header" />
+          </div>
         </div>
       </div>
     </el-drawer>
@@ -119,23 +125,6 @@ html, body {
   background: #47494E;
   padding: 1rem;
 }
-.btn-header-menu {
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #B3C0D1;
-  border: none;
-  border-radius: 1rem;
-}
-.el-header {
-  background-color: #B3C0D1;
-  color: #333;
-  line-height: 60px;
-  text-align: right;
-  font-size: 12px;
-}
 .list-chat {
   display: flex;
   flex-wrap: wrap;
@@ -150,45 +139,7 @@ html, body {
   margin-right: 15px;
   font-size: large
 }
-
-.el-aside {
-  color: #333;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
 .bg-purple-dark {
   background: #99a9bf;
-}
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-  height: 100vh;
 }
 </style>
